@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>设计模式之观察者模式 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初始观察者模式Observer(观察者) 是一种设计模式， 其中 一个对象(subject) 维持一系列依赖于它 (观察者) 的对象，将有关状态有关的任何变动通知给他们。 先从订阅-发布的角度来理解一下它 :D 123456789101112131415161718192021222324252627282930313233343536373839404142// 我们先创建一个发布者的类con">
+  <meta name="description" content="初始观察者模式Observer(观察者) 是一种设计模式， 其中 一个对象(subject) 维持一系列依赖于它 (观察者) 的对象，将有关状态有关的任何变动通知给他们。 先从订阅-发布的角度来理解一下它 :D 这就类似我们在微信平台订阅了公众号当它有新的文章发表后，就会推送给我们所有订阅的人 我们可以看到例子中这种模式的优点 我们作为订阅者不必每次都去查看这个公众号有没有新文章发布，公众号作为">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式之观察者模式">
 <meta property="og:url" content="http://yoursite.com/2018/01/12/设计模式之观察者模式/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="初始观察者模式Observer(观察者) 是一种设计模式， 其中 一个对象(subject) 维持一系列依赖于它 (观察者) 的对象，将有关状态有关的任何变动通知给他们。 先从订阅-发布的角度来理解一下它 :D 123456789101112131415161718192021222324252627282930313233343536373839404142// 我们先创建一个发布者的类con">
+<meta property="og:description" content="初始观察者模式Observer(观察者) 是一种设计模式， 其中 一个对象(subject) 维持一系列依赖于它 (观察者) 的对象，将有关状态有关的任何变动通知给他们。 先从订阅-发布的角度来理解一下它 :D 这就类似我们在微信平台订阅了公众号当它有新的文章发表后，就会推送给我们所有订阅的人 我们可以看到例子中这种模式的优点 我们作为订阅者不必每次都去查看这个公众号有没有新文章发布，公众号作为">
 <meta property="og:image" content="http://yoursite.com/2018/01/12/设计模式之观察者模式/code.gif">
 <meta property="og:image" content="http://yoursite.com/2018/01/12/设计模式之观察者模式/taste.jpg">
-<meta property="og:updated_time" content="2018-01-13T06:51:39.000Z">
+<meta property="og:updated_time" content="2018-01-13T08:37:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之观察者模式">
-<meta name="twitter:description" content="初始观察者模式Observer(观察者) 是一种设计模式， 其中 一个对象(subject) 维持一系列依赖于它 (观察者) 的对象，将有关状态有关的任何变动通知给他们。 先从订阅-发布的角度来理解一下它 :D 123456789101112131415161718192021222324252627282930313233343536373839404142// 我们先创建一个发布者的类con">
+<meta name="twitter:description" content="初始观察者模式Observer(观察者) 是一种设计模式， 其中 一个对象(subject) 维持一系列依赖于它 (观察者) 的对象，将有关状态有关的任何变动通知给他们。 先从订阅-发布的角度来理解一下它 :D 这就类似我们在微信平台订阅了公众号当它有新的文章发表后，就会推送给我们所有订阅的人 我们可以看到例子中这种模式的优点 我们作为订阅者不必每次都去查看这个公众号有没有新文章发布，公众号作为">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/12/设计模式之观察者模式/code.gif">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -179,15 +179,24 @@
         <img src="/2018/01/12/设计模式之观察者模式/code.gif">
 <h4 id="初始观察者模式"><a href="#初始观察者模式" class="headerlink" title="初始观察者模式"></a>初始观察者模式</h4><p>Observer(观察者) 是一种设计模式， 其中 一个对象(subject) 维持一系列依赖于它 (观察者) 的对象，将有关状态有关的任何变动通知给他们。</p>
 <p>先从订阅-发布的角度来理解一下它 :D</p>
+<p>这就类似我们在微信平台订阅了公众号<br>当它有新的文章发表后，就会推送给我们所有订阅的人</p>
+<p>我们可以看到例子中这种模式的优点</p>
+<p>我们作为订阅者不必每次都去查看这个公众号有没有新文章发布，<br>公众号作为发布者会在合适时间通知我们<br>我们与公众号之间不再强耦合在一起。公众号不关心谁订阅了它，<br>不管你是男是女还是宠物狗，它只需要定时向所有订阅者发布消息即可<br>很简单的道理，过年的时候，群发祝福短信一定要比挨个发短信方便的多</p>
+<p>通过上面的例子映射出我们观察者模式的优点</p>
+<p>可以广泛应用于异步编程，它可以代替我们传统的回调函数<br>我们不需要关注对象在异步执行阶段的内部状态，我们只关心事件完成的时间点<br>取代对象之间硬编码通知机制，一个对象不必显式调用另一个对象的接口，而是松耦合的联系在一起<br>虽然不知道彼此的细节，但不影响相互通信。更重要的是，其中一个对象改变不会影响另一个对象</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 我们先创建一个发布者的类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Observable = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.subscribers = &#123;&#125;</span><br><span class="line"><span class="comment">// this.subscribers 里面将会保存这个发布者的订阅者们~</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Observable.prototype = &#123;</span><br><span class="line">  <span class="keyword">constructor</span>: Observable,</span><br><span class="line">  subscribe: function(type, fn) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.subscribers[type]) &#123;</span><br><span class="line">      <span class="keyword">this</span>.subscribers[type] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.subscribers[type].push(fn);</span><br><span class="line">  &#125;,</span><br><span class="line">  unSubscribe: <span class="function"><span class="keyword">function</span>(<span class="params">type, fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.subscribers[type]) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> listeners = <span class="keyword">this</span>.subscribers[type];</span><br><span class="line">    listeners.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (item === listeners[index]) &#123;</span><br><span class="line">        listeners.splice(index, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  publish: <span class="function"><span class="keyword">function</span>(<span class="params">type, eventInfo</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.subscribers[type]) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!eventInfo[type]) &#123;</span><br><span class="line">      eventInfo[type] = type;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> listeners = <span class="keyword">this</span>.subscribers[type];</span><br><span class="line">    listeners.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">      item(eventInfo);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后咧， 我们就可以来创建一个示例应用， 并设置一个 ‘message’ 的订阅者以此来达到传递订阅信息的目的</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> publisher = <span class="keyword">new</span> Observable();</span><br><span class="line"><span class="keyword">const</span> eventInfo = &#123; <span class="attr">message</span>: <span class="string">'hello observer pattern!'</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> subscriber = <span class="function"><span class="params">eventInfo</span> =&gt;</span> <span class="built_in">console</span>.log(eventInfo);</span><br><span class="line"></span><br><span class="line">publisher.subscribe(<span class="string">'message'</span>, subscriber);</span><br><span class="line"></span><br><span class="line">publisher.publish(<span class="string">'message'</span>, eventInfo);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>好了， 如果上面这段代码你理解了， 那么你已经打开了观察者模式的黑盒子</p>
 <img src="/2018/01/12/设计模式之观察者模式/taste.jpg">
 <p>上面这段代码呢， 揭露了几个关键的地方：</p>
-<p>发布者和订阅者之间的关系是通过发布者上的一个对象来建立交互的， 即我们用到的subscribers</p>
-<p>订阅者呢， 本质上是一个函数 (js 本身也是一个对象)</p>
-<p>订阅， 取消订阅， 发布的功能都在发布者的身上， 订阅者只是通过 attach (即依附) 或者说 disattach (即脱离) 来订阅或者退订事件的</p>
+<ol>
+<li>发布者和订阅者之间的关系是通过发布者上的一个对象来建立交互的， 即我们用到的subscribers</li>
+<li>订阅者呢， 本质上是一个函数 (js 本身也是一个对象)</li>
+<li>订阅， 取消订阅， 发布的功能都在发布者的身上， 订阅者只是通过 attach (即依附) 或者说 disattach (即脱离) 来订阅或者退订事件的</li>
+</ol>
+<p>若 用在此处的订阅者 是一个对象上的 update() 方法， 而发布者会在自身数据发生改变的时候调用一下自己的 publish() 方法， 那么就是实现了发布者发生数据状态改变时， 去通知订阅者改变自身数据的功能 :D</p>
+<h4 id="进阶观察者模式"><a href="#进阶观察者模式" class="headerlink" title="进阶观察者模式"></a>进阶观察者模式</h4><p>一些书中将说观察者模式就是订阅发布者模式， 但其实他们只是非常相似而已, 未完待续 :D</p>
 
       
 
