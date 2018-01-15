@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>设计模式之观察者模式 | Hexo</title>
+  <title>浅析设计模式之观察者模式 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="设计模式设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的，设计模式使代码编制真正工程化，设计模式是软件工程的基石，如同大厦的一块块砖石一样。项目中合理的运用设计模式可以完美的解决很多问题，每种模式在现在中都有相应的原理来与">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式之观察者模式">
+<meta property="og:title" content="浅析设计模式之观察者模式">
 <meta property="og:url" content="http://yoursite.com/2018/01/12/设计模式之观察者模式/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="设计模式设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的，设计模式使代码编制真正工程化，设计模式是软件工程的基石，如同大厦的一块块砖石一样。项目中合理的运用设计模式可以完美的解决很多问题，每种模式在现在中都有相应的原理来与">
 <meta property="og:image" content="http://yoursite.com/2018/01/12/设计模式之观察者模式/code.gif">
 <meta property="og:image" content="http://yoursite.com/2018/01/12/设计模式之观察者模式/taste.jpg">
-<meta property="og:updated_time" content="2018-01-13T08:55:52.000Z">
+<meta property="og:updated_time" content="2018-01-15T09:15:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式之观察者模式">
+<meta name="twitter:title" content="浅析设计模式之观察者模式">
 <meta name="twitter:description" content="设计模式设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的，设计模式使代码编制真正工程化，设计模式是软件工程的基石，如同大厦的一块块砖石一样。项目中合理的运用设计模式可以完美的解决很多问题，每种模式在现在中都有相应的原理来与">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/12/设计模式之观察者模式/code.gif">
   
@@ -163,7 +163,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      设计模式之观察者模式
+      浅析设计模式之观察者模式
     </h1>
   
 
@@ -203,7 +203,7 @@
 <li>订阅， 取消订阅， 发布的功能都在发布者的身上， 订阅者只是通过 attach (即依附) 或者说 disattach (即脱离) 来订阅或者退订事件的</li>
 </ol>
 <p>若 用在此处的订阅者 是一个对象上的 update() 方法， 而发布者会在自身数据发生改变的时候调用一下自己的 publish() 方法， 那么就是实现了发布者发生数据状态改变时， 去通知订阅者改变自身数据的功能 :D</p>
-<h4 id="进阶观察者模式"><a href="#进阶观察者模式" class="headerlink" title="进阶观察者模式"></a>进阶观察者模式</h4><p>一些书中将说观察者模式就是订阅发布者模式， 但其实他们只是非常相似而已, 未完待续 :D</p>
+<h4 id="进阶观察者模式"><a href="#进阶观察者模式" class="headerlink" title="进阶观察者模式"></a>进阶观察者模式</h4><p><a href="/2018/01/15/%E6%B7%B1%E5%85%A5%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">深入观察者模式</a></p>
 
       
 
@@ -301,6 +301,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/01/15/深入观察者模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          深入观察者模式
+        
+      </div>
+    </a>
   
   
     <a href="/2018/01/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
