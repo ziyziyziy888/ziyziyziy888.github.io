@@ -14,10 +14,12 @@
 <meta property="og:url" content="http://yoursite.com/2018/01/16/，矮油不错哦/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="又摘阮一峰了， 嘿嘿嘿。 理解OAuth 2.0 http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html 先来个定义呗OAuth 是一个关于授权 (authorization) 的开放网络标准， 在全世界得到广泛应用， 目前2.0 先来定义几个名词  Third-party application: 三方应用程序,（client）, 需要用户的授">
-<meta property="og:updated_time" content="2018-01-16T07:33:06.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/01/16/，矮油不错哦/base.jpg">
+<meta property="og:updated_time" content="2018-01-17T07:27:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OAuth2.0，矮油不错哦">
 <meta name="twitter:description" content="又摘阮一峰了， 嘿嘿嘿。 理解OAuth 2.0 http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html 先来个定义呗OAuth 是一个关于授权 (authorization) 的开放网络标准， 在全世界得到广泛应用， 目前2.0 先来定义几个名词  Third-party application: 三方应用程序,（client）, 需要用户的授">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/16/，矮油不错哦/base.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -187,6 +189,43 @@
 <li>Resource server: 资源服务器呗</li>
 </ol>
 <p>所以哩， OAuth的作用就是让 client 安全 可控的获取用户授权， 与服务器提供商互动</p>
+<img src="/2018/01/16/，矮油不错哦/base.jpg">
+<p>然后咧</p>
+<p>A 客户端向用户请求授权<br>B 用户同意授权<br>C 客户端拿着授权去向认证服务器申请令牌<br>D 给你， 令牌 (token)<br>E 客户端凭令牌去向资源服务器拿资源<br>F 资源服务器确定token OK，同意开放资源</p>
+<h4 id="客户端的授权模式"><a href="#客户端的授权模式" class="headerlink" title="客户端的授权模式"></a>客户端的授权模式</h4><p>OAuth四种授权方式</p>
+<ol>
+<li>授权码模式</li>
+<li>简化模式</li>
+<li>密码模式</li>
+<li>客户端模式</li>
+</ol>
+<p>下面重点看一下授权码模式</p>
+<h4 id="授权码模式"><a href="#授权码模式" class="headerlink" title="授权码模式"></a>授权码模式</h4><p>授权码模式 (authorization code) 是目前功能最完整、 流程最严密的授权模式。 它的特点就是通过客户端的后台服务器， 与服务提供商的认证服务器互动</p>
+
+<p>A 用户访问客户端， 客户端将用户导向认证服务器</p>
+<p>B 用户选择是否授权</p>
+<p>C 如果用户选择给予授权， 那么认证服务器将用户导向客户端事先指定的 重定向URI, 同时附上一个授权码</p>
+<p>D 客户端收到授权码， 附上早先的重定向URI, 向认证服务器申请令牌，这一步是在客户端的后台的服务器上完成的， 对用户不可见</p>
+<p>E 认证服务器核对了授权码和重定向的URI, 确定无误后向客户端发送访问令牌 (access token) 和更新令牌 (refresh token) </p>
+<p>下面摘了点参数， 感受一下</p>
+<p>A步骤中客户端申请认证的URI, 包含以下参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response_type：表示授权类型，必选项，此处的值固定为<span class="string">"code"</span></span><br><span class="line">client_id：表示客户端的ID，必选项</span><br><span class="line">redirect_uri：表示重定向URI，可选项</span><br><span class="line">scope：表示申请的权限范围，可选项</span><br><span class="line">state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值</span><br></pre></td></tr></table></figure>
+<p>以下是一个栗子🌰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">GET /authorize?response_type=code&amp;client_id=s6BhdRkqt3&amp;state=xyz</span><br><span class="line">        &amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1</span><br><span class="line">Host: server.example.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>C步骤中, 服务器回应客户端的URI, 包含一下参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">code: 表示授权码， 有效期比较短，客户端只能使用一次， 该码和客户端的ID和重定向的URI，是一一对应的关系</span><br><span class="line">state: 原封不动传递回来客户端传递的数据</span><br></pre></td></tr></table></figure>
+<p>🌰栗子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 302 Found</span><br><span class="line">Location: https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA</span><br><span class="line">          &amp;state=xyz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>D步骤中， 客户端向认证服务器申请令牌的HTTP请求，包含以下参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">grant_type：表示使用的授权模式，必选项，此处的值固定为<span class="string">"authorization_code"</span>。</span><br><span class="line">code：表示上一步获得的授权码，必选项。</span><br><span class="line">redirect_uri：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致。</span><br><span class="line">client_id：表示客户端ID，必选项。</span><br></pre></td></tr></table></figure>
+<p>🌰你猜的没错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /token HTTP/1.1</span><br><span class="line">Host: server.example.com</span><br><span class="line">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA</span><br><span class="line">&amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb</span><br></pre></td></tr></table></figure>
+<p>E步骤中， 认证服务器发送HTTP回复，包含以下参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">access_token：表示访问令牌，必选项。</span><br><span class="line">token_type：表示令牌类型，该值大小写不敏感，必选项，可以是bearer类型或mac类型。</span><br><span class="line">expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。</span><br><span class="line">refresh_token：表示更新令牌，用来获取下一次的访问令牌，可选项。</span><br><span class="line">scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。</span><br></pre></td></tr></table></figure>
+<p>🌰栗栗子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Type: application/json;charset=UTF-8</span><br><span class="line">Cache-Control: no-store</span><br><span class="line">Pragma: no-cache</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;access_token&quot;:&quot;2YotnFZFEjr1zCsicMWpAA&quot;,</span><br><span class="line">  &quot;token_type&quot;:&quot;example&quot;,</span><br><span class="line">  &quot;expires_in&quot;:3600,</span><br><span class="line">  &quot;refresh_token&quot;:&quot;tGzv3JOkF0XG5Qx2TlKWIA&quot;,</span><br><span class="line">  &quot;example_parameter&quot;:&quot;example_value&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>拿出小本本记一下， 划重点划重点啦， HTTP 头信息中明确指出不得缓存</p>
+<p>嘟嘟噜 :D  Have a nice day!</p>
 
       
 
