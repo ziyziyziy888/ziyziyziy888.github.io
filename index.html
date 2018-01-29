@@ -157,6 +157,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-GraphQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/29/GraphQL/">GraphQL</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/29/GraphQL/" class="archive-article-date">
+  	<time datetime="2018-01-29T08:24:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>哎呀呀， 好久不见啊 old friends, :D</p>
+<img src="/2018/01/29/GraphQL/lot.jpg">
+<p>言归正传啊， 今天我要去了解一个Facebook不错的东东</p>
+<h3 id="什么是GraphQL"><a href="#什么是GraphQL" class="headerlink" title="什么是GraphQL"></a>什么是GraphQL</h3><blockquote><p>GraphQL is a query language created by Facebook in 2012 which provides a common interface between the client and the server for data fetching and manipulations.</p>
+</blockquote>
+<p>简单的翻译过来就是， GraphQL是一个为了获取数据和数据修改而在客户端和服务端之间提供一个公共的界面查询语言</p>
+<p>是不是很绕。。。</p>
+<blockquote><p>The client asks for various data from the GraphQL server via queries. The response format is described in the query and defined by the client instead of the server: they are called client‐specified queries. The structure of the data is not hardcoded as in traditional REST APIs - this makes retrieving data from the server more efficient for the client.</p>
+</blockquote>
+<p>翻译菌：客户端从GraphQL服务器请求不同的数据。返回的响应被格式化描述成请求时查询的样子， 定义成客户端的样子而不是由服务器来定义。</p>
+<p>总结一下： 就是应用端可以通过GraphQL 从服务端的应用集中轻易获取一个自定义结构的数据</p>
+<p>先来看一个东西</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  user(id: <span class="number">3500401</span>) &#123;</span><br><span class="line">    id,</span><br><span class="line">    name,</span><br><span class="line">    isViewerFriend</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个东西不是一个json，但我们可以看出来查询的是id为3500401的id, name, isViewerFriend的信息</p>
+<p>用户信息对于各个业务都是通用的，假设另外一个业务需要这样的用户信息 b：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  user(id: 3500401) &#123;</span><br><span class="line">    name,</span><br><span class="line">    profilePicture(size: 50)  &#123;</span><br><span class="line">      uri,</span><br><span class="line">      width,</span><br><span class="line">      height</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般来说，用户信息对应的数据模型都是固定的，每次请求其实就是对数据做过滤和筛选。对应到数据库操作，就是数据的查询操作。如果客户端也能够发送“查询”请求，那不就可以从后端接口这个大的“数据集”中去过滤筛选业务所需要的数据了吗？</p>
+<p>GraphQL 就是基于这样的思想来设计的。使用上面的查询，GraphQL 服务器会分别返回如下响应内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;user&quot; : &#123;</span><br><span class="line">    &quot;id&quot;: 3500401,</span><br><span class="line">    &quot;name&quot;: &quot;Jing Chen&quot;,</span><br><span class="line">    &quot;isViewerFriend&quot;: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;user&quot; : &#123;</span><br><span class="line">    &quot;name&quot;: &quot;Jing Chen&quot;,</span><br><span class="line">    &quot;profilePicture&quot;: &#123;</span><br><span class="line">      &quot;uri&quot;: &quot;http: //someurl.cdn/pic.jpg&quot;,</span><br><span class="line">      &quot;width&quot;: 50,</span><br><span class="line">      &quot;height&quot;: 50</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只需要改变查询内容，前端就能定制服务器返回的响应内容，这就是 GraphQL 的客户端指定查询（Client Specified Queries）。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/29/GraphQL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-老树的诗" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
