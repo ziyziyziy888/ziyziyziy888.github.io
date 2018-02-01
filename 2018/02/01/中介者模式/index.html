@@ -8,21 +8,21 @@
   <meta name="description" content="北小城的个人博客">
   <meta name="keyword" content="北小城,个人博客,技术博客,前端,前端工程师">
   <link rel="dns-prefetch" href="https://hearmytears.cn">
-  <title>GraphQL | 北小城的个人博客</title>
+  <title>中介者模式 | 北小城的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="哎呀呀， 好久不见啊 old friends, :D  言归正传啊， 今天我要去了解一个Facebook不错的东东 什么是GraphQLGraphQL is a query language created by Facebook in 2012 which provides a common interface between the client and the server for data">
+  <meta name="description" content="好咯，好久不见，最帅的北小城又回来了。今天看一下中介者模式 Mediator 模式 中介者模式之前的观察者模式、 发布/订阅模式和本次的中介者模式区别在哪里呢， 为此我特意做图一张。  下面再来看一眼Mediator的基本实现 123456789101112131415161718192021222324252627282930313233var mediator = (function() &amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GraphQL">
-<meta property="og:url" content="https://hearmytears.cn/2018/01/29/GraphQL/index.html">
+<meta property="og:title" content="中介者模式">
+<meta property="og:url" content="https://hearmytears.cn/2018/02/01/中介者模式/index.html">
 <meta property="og:site_name" content="北小城的个人博客">
-<meta property="og:description" content="哎呀呀， 好久不见啊 old friends, :D  言归正传啊， 今天我要去了解一个Facebook不错的东东 什么是GraphQLGraphQL is a query language created by Facebook in 2012 which provides a common interface between the client and the server for data">
+<meta property="og:description" content="好咯，好久不见，最帅的北小城又回来了。今天看一下中介者模式 Mediator 模式 中介者模式之前的观察者模式、 发布/订阅模式和本次的中介者模式区别在哪里呢， 为此我特意做图一张。  下面再来看一眼Mediator的基本实现 123456789101112131415161718192021222324252627282930313233var mediator = (function() &amp;#">
 <meta property="og:locale" content="Chinese">
-<meta property="og:image" content="https://hearmytears.cn/2018/01/29/GraphQL/lot.jpg">
-<meta property="og:updated_time" content="2018-01-29T10:31:41.243Z">
+<meta property="og:image" content="https://hearmytears.cn/2018/02/01/中介者模式/three.png">
+<meta property="og:updated_time" content="2018-02-01T04:15:45.974Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GraphQL">
-<meta name="twitter:description" content="哎呀呀， 好久不见啊 old friends, :D  言归正传啊， 今天我要去了解一个Facebook不错的东东 什么是GraphQLGraphQL is a query language created by Facebook in 2012 which provides a common interface between the client and the server for data">
-<meta name="twitter:image" content="https://hearmytears.cn/2018/01/29/GraphQL/lot.jpg">
+<meta name="twitter:title" content="中介者模式">
+<meta name="twitter:description" content="好咯，好久不见，最帅的北小城又回来了。今天看一下中介者模式 Mediator 模式 中介者模式之前的观察者模式、 发布/订阅模式和本次的中介者模式区别在哪里呢， 为此我特意做图一张。  下面再来看一眼Mediator的基本实现 123456789101112131415161718192021222324252627282930313233var mediator = (function() &amp;#">
+<meta name="twitter:image" content="https://hearmytears.cn/2018/02/01/中介者模式/three.png">
   
     <link rel="alternative" href="/atom.xml" title="北小城的个人博客" type="application/atom+xml">
   
@@ -158,49 +158,31 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-GraphQL" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-中介者模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      GraphQL
+      中介者模式
     </h1>
   
 
         
-        <a href="/2018/01/29/GraphQL/" class="archive-article-date">
-  	<time datetime="2018-01-29T08:24:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
+        <a href="/2018/02/01/中介者模式/" class="archive-article-date">
+  	<time datetime="2018-02-01T03:33:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>哎呀呀， 好久不见啊 old friends, :D</p>
-<img src="/2018/01/29/GraphQL/lot.jpg">
-<p>言归正传啊， 今天我要去了解一个Facebook不错的东东</p>
-<h3 id="什么是GraphQL"><a href="#什么是GraphQL" class="headerlink" title="什么是GraphQL"></a>什么是GraphQL</h3><blockquote><p>GraphQL is a query language created by Facebook in 2012 which provides a common interface between the client and the server for data fetching and manipulations.</p>
-</blockquote>
-<p>简单的翻译过来就是， GraphQL是一个为了获取数据和数据修改而在客户端和服务端之间提供一个公共的界面查询语言</p>
-<p>是不是很绕。。。</p>
-<blockquote><p>The client asks for various data from the GraphQL server via queries. The response format is described in the query and defined by the client instead of the server: they are called client‐specified queries. The structure of the data is not hardcoded as in traditional REST APIs - this makes retrieving data from the server more efficient for the client.</p>
-</blockquote>
-<p>翻译菌：客户端从GraphQL服务器请求不同的数据。返回的响应被格式化描述成请求时查询的样子， 定义成客户端的样子而不是由服务器来定义。</p>
-<p>总结一下： 就是应用端可以通过GraphQL 从服务端的应用集中轻易获取一个自定义结构的数据</p>
-<p>先来看一个东西</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  user(id: <span class="number">3500401</span>) &#123;</span><br><span class="line">    id,</span><br><span class="line">    name,</span><br><span class="line">    isViewerFriend</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个东西不是一个json，但我们可以看出来查询的是id为3500401的id, name, isViewerFriend的信息</p>
-<p>用户信息对于各个业务都是通用的，假设另外一个业务需要这样的用户信息 b：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  user(id: 3500401) &#123;</span><br><span class="line">    name,</span><br><span class="line">    profilePicture(size: 50)  &#123;</span><br><span class="line">      uri,</span><br><span class="line">      width,</span><br><span class="line">      height</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一般来说，用户信息对应的数据模型都是固定的，每次请求其实就是对数据做过滤和筛选。对应到数据库操作，就是数据的查询操作。如果客户端也能够发送“查询”请求，那不就可以从后端接口这个大的“数据集”中去过滤筛选业务所需要的数据了吗？</p>
-<p>GraphQL 就是基于这样的思想来设计的。使用上面的查询，GraphQL 服务器会分别返回如下响应内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;user&quot; : &#123;</span><br><span class="line">    &quot;id&quot;: 3500401,</span><br><span class="line">    &quot;name&quot;: &quot;Jing Chen&quot;,</span><br><span class="line">    &quot;isViewerFriend&quot;: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;user&quot; : &#123;</span><br><span class="line">    &quot;name&quot;: &quot;Jing Chen&quot;,</span><br><span class="line">    &quot;profilePicture&quot;: &#123;</span><br><span class="line">      &quot;uri&quot;: &quot;http: //someurl.cdn/pic.jpg&quot;,</span><br><span class="line">      &quot;width&quot;: 50,</span><br><span class="line">      &quot;height&quot;: 50</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>只需要改变查询内容，前端就能定制服务器返回的响应内容，这就是 GraphQL 的客户端指定查询（Client Specified Queries）。</p>
-<p>今天先到这</p>
-<p>Have a nice day :D</p>
-
+        <p>好咯，好久不见，最帅的北小城又回来了。<br>今天看一下中介者模式 Mediator 模式</p>
+<h4 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h4><p>之前的观察者模式、 发布/订阅模式和本次的中介者模式区别在哪里呢， 为此我特意做图一张。</p>
+<img src="/2018/02/01/中介者模式/three.png">
+<p>下面再来看一眼Mediator的基本实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mediator = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> topics = &#123;&#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> subscribe = <span class="function"><span class="keyword">function</span>(<span class="params">topic, fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!topics[topic]) &#123;</span><br><span class="line">      topics[topic] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    topics[topic].push(&#123; <span class="attr">context</span>: <span class="keyword">this</span>, <span class="attr">callback</span>: fn &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> publish = <span class="function"><span class="keyword">function</span>(<span class="params">topic</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args;</span><br><span class="line">    <span class="keyword">if</span> (!topics[topic]) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    args = <span class="built_in">Array</span>.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, len = topics[topic].length; i += <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> subscription = topics[topic][i];</span><br><span class="line">      subscription.callback.apply(subscription.context, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    Publish: publish,</span><br><span class="line">    Subscribe: subscribe,</span><br><span class="line">    installTo: <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      obj.subscribe = subscribe;</span><br><span class="line">      obj.publish = publish;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
       
 
       
@@ -284,7 +266,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://hearmytears.cn/2018/01/29/GraphQL/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://hearmytears.cn/2018/02/01/中介者模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +280,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/02/01/中介者模式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          中介者模式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/29/老树的诗/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">老树的诗</div>
+    <a href="/2018/01/29/GraphQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GraphQL</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -348,7 +321,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://hearmytears.cn/2018/01/29/GraphQL/",
+  id: "https://hearmytears.cn/2018/02/01/中介者模式/",
   owner: 'ziyziyziy888',
   repo: 'ziyziyziy888.github.io',
   oauth: {
