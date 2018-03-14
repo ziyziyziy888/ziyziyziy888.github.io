@@ -182,14 +182,8 @@
 <img src="/2018/03/13/浅读EffectiveJavascript/haha.jpg">
 <p>那么我推荐你也来读一读这本EffectiveJavascript</p>
 <h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ol>
-<li>原始类型优于封装对象</li>
-</ol>
-<p>例如String对象有一个toUpperCase方法</p>
-<p>“hello”.toUpperCase()</p>
-<p>这种隐式封装会产生一个新的String对象， 这种隐式封装的一个奇怪后果是你可以对原始值设置属性，但是对其丝毫没有影响</p>
-<p>“hello”.someProperty = 12;<br>“hello”.someProperty; // undefined</p>
-<p>事实证明， 这是js隐藏类型错误的有一种情形。 本来你想对一个对象设置属性， 但没注意到其实它是个原始值， 而程序只是忽略更新继续运行。</p>
-<ol>
+<li><p>原始类型优于封装对象<br>例如String对象有一个toUpperCase方法 “hello”.toUpperCase()  这种隐式封装会产生一个新的String对象, 这种隐式封装的一个奇怪后果是你可以对原始值设置属性，但是对其丝毫没有影响 “hello”.someProperty = 12; “hello”.someProperty; // undefined 事实证明， 这是js隐藏类型错误的有一种情形。 本来你想对一个对象设置属性， 但没注意到其实它是个原始值， 而程序只是忽略更新继续运行。</p>
+</li>
 <li><p>Javascript 自动分号插入技术<br>(1) 分号仅在}标记之前、 一个或者多个换行之后和程序输入的结尾被插入<br>(2) 分号仅在输入标记不能被解析时插入<br>(3) 在以(, [, +, = 号前绝不能省略分号<br>(4) return throw break continue ++ – 的参数之前不能换行<br>(5) 脚本链接时显式地插入分号</p>
 </li>
 <li><p>Unicode 他为世界上所有的文字系统的每个字符单位分配了一个唯一的整数， 目前最流行的几个编码标准UTF-8, UTF-16 等等， 涉及到Unicode的处理必须谨慎， 不能信任字符串的长度， 索引值或是众多正则， 考虑到字符串的属性和方法， 字符串表现的就像UTF-16代码单元序列</p>
