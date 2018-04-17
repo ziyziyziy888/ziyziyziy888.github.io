@@ -8,19 +8,19 @@
   <meta name="description" content="北小城的个人博客">
   <meta name="keyword" content="北小城,个人博客,技术博客,前端,前端工程师">
   <link rel="dns-prefetch" href="https://hearmytears.cn">
-  <title>阅读underlinescore源码笔记 | 北小城的个人博客</title>
+  <title>TencentJobInterviewNote | 北小城的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="underscore简介underscore作为一个JavaScript工具库， 提供了一系列实用的函数式编程的功能。 这不是重点， 重点是， 他比较好啃啊， 看源码肯定要找看起来舒服的看啊。 smile。 开始~ .contain 方法的实现是 内部使用 .indexOf 后判断其的返回值 我发现underscore中有很多方法所传的参数可以为对象， 也可以为数组，它的处理方法都是先 通过简单封">
+  <meta name="description" content="react的diff算法是怎样实现的， 如何从时间复杂度O(n^3) 降到O(n)的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阅读underlinescore源码笔记">
-<meta property="og:url" content="https://hearmytears.cn/2018/03/23/阅读underlinescore源码笔记/index.html">
+<meta property="og:title" content="TencentJobInterviewNote">
+<meta property="og:url" content="https://hearmytears.cn/2018/04/11/TencentJobInterviewNote/index.html">
 <meta property="og:site_name" content="北小城的个人博客">
-<meta property="og:description" content="underscore简介underscore作为一个JavaScript工具库， 提供了一系列实用的函数式编程的功能。 这不是重点， 重点是， 他比较好啃啊， 看源码肯定要找看起来舒服的看啊。 smile。 开始~ .contain 方法的实现是 内部使用 .indexOf 后判断其的返回值 我发现underscore中有很多方法所传的参数可以为对象， 也可以为数组，它的处理方法都是先 通过简单封">
+<meta property="og:description" content="react的diff算法是怎样实现的， 如何从时间复杂度O(n^3) 降到O(n)的">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2018-03-30T07:59:59.482Z">
+<meta property="og:updated_time" content="2018-04-13T06:20:50.448Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阅读underlinescore源码笔记">
-<meta name="twitter:description" content="underscore简介underscore作为一个JavaScript工具库， 提供了一系列实用的函数式编程的功能。 这不是重点， 重点是， 他比较好啃啊， 看源码肯定要找看起来舒服的看啊。 smile。 开始~ .contain 方法的实现是 内部使用 .indexOf 后判断其的返回值 我发现underscore中有很多方法所传的参数可以为对象， 也可以为数组，它的处理方法都是先 通过简单封">
+<meta name="twitter:title" content="TencentJobInterviewNote">
+<meta name="twitter:description" content="react的diff算法是怎样实现的， 如何从时间复杂度O(n^3) 降到O(n)的">
   
     <link rel="alternative" href="/atom.xml" title="北小城的个人博客" type="application/atom+xml">
   
@@ -156,38 +156,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-阅读underlinescore源码笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-TencentJobInterviewNote" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      阅读underlinescore源码笔记
+      TencentJobInterviewNote
     </h1>
   
 
         
-        <a href="/2018/03/23/阅读underlinescore源码笔记/" class="archive-article-date">
-  	<time datetime="2018-03-23T07:50:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-23</time>
+        <a href="/2018/04/11/TencentJobInterviewNote/" class="archive-article-date">
+  	<time datetime="2018-04-11T13:37:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="underscore简介"><a href="#underscore简介" class="headerlink" title="underscore简介"></a>underscore简介</h3><p>underscore作为一个JavaScript工具库， 提供了一系列实用的函数式编程的功能。</p>
-<p>这不是重点， 重点是， 他比较好啃啊， 看源码肯定要找看起来舒服的看啊。 smile。</p>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始~"></a>开始~</h3><ol>
-<li><em>.contain 方法的实现是 内部使用 </em>.indexOf 后判断其的返回值</li>
-<li>我发现underscore中有很多方法所传的参数可以为对象， 也可以为数组，它的处理方法都是先 通过简单封装的一个isArrayLike()方法来判断 这个obj参数是一个类数组， 还是对象， 然后捏就是这样<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var keys = isArrayLike(obj) ? obj : _.values(obj),</span><br><span class="line">    length = (keys || obj).length;</span><br><span class="line">for (var index = 0; index &lt; length; index++ ) &#123;</span><br><span class="line">  var currentKey = keys ? keys[index], index;</span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>underscore 进行深拷贝尤其是数组的深拷贝时， 会倾向于使用Array(原数组length)的方式， 然后通过遍历存值。<h3 id="js继承的几种方式"><a href="#js继承的几种方式" class="headerlink" title="js继承的几种方式"></a>js继承的几种方式</h3>原型链继承<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">SuperType</span></span>() &#123;</span><br><span class="line">  this.type = 1;</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.getSuperValue = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  <span class="built_in">return</span> this.type;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">SubType</span></span>() &#123;</span><br><span class="line">  this.type = 2;</span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype = new SuperType();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>借用构造函数， 在子类构造函数中构造超类构造函数， 通过call和apply方法在新创建的对象上执行构造函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">SuperType</span></span>() &#123;</span><br><span class="line">  this.lists = [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">SubType</span></span>() &#123;</span><br><span class="line">  SuperType.call(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>组合继承<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> SuperType(name) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.lists = [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.sayName = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> SubType(name) &#123;</span><br><span class="line">  SuperType.call(this, name);</span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line">SubType.prototpye.constructor = SubType;</span><br></pre></td></tr></table></figure></p>
-<p>原型式继承， 如同我上一篇博文中的单参数Object.create<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> object(o) &#123;</span><br><span class="line">  funtion <span class="function"><span class="title">F</span></span>() &#123;&#125;</span><br><span class="line">  F.prototype = o;</span><br><span class="line">  <span class="built_in">return</span> new F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+        <h3 id="react的diff算法是怎样实现的，-如何从时间复杂度O-n-3-降到O-n-的"><a href="#react的diff算法是怎样实现的，-如何从时间复杂度O-n-3-降到O-n-的" class="headerlink" title="react的diff算法是怎样实现的， 如何从时间复杂度O(n^3) 降到O(n)的"></a>react的diff算法是怎样实现的， 如何从时间复杂度O(n^3) 降到O(n)的</h3>
       
 
       
@@ -271,7 +260,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://hearmytears.cn/2018/03/23/阅读underlinescore源码笔记/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://hearmytears.cn/2018/04/11/TencentJobInterviewNote/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,18 +274,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/11/TencentJobInterviewNote/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          TencentJobInterviewNote
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/13/浅读EffectiveJavascript/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">浅读EffectiveJavascript</div>
+    <a href="/2018/03/23/阅读underlinescore源码笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">阅读underlinescore源码笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -335,7 +315,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://hearmytears.cn/2018/03/23/阅读underlinescore源码笔记/",
+  id: "https://hearmytears.cn/2018/04/11/TencentJobInterviewNote/",
   owner: 'ziyziyziy888',
   repo: 'ziyziyziy888.github.io',
   oauth: {
