@@ -18,7 +18,7 @@
 <meta property="og:description" content="哈喽， 北小城的一亿个粉丝们， 好久不见 :D 你还记得你三个月前写的啥吗  那么我推荐你也来读一读这本EffectiveJavascript Notes 原始类型优于封装对象例如String对象有一个toUpperCase方法 “hello”.toUpperCase()  这种隐式封装会产生一个新的String对象, 这种隐式封装的一个奇怪后果是你可以对原始值设置属性，但是对其丝毫没有影响 “h">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://hearmytears.cn/2018/03/13/浅读EffectiveJavascript/haha.jpg">
-<meta property="og:updated_time" content="2018-04-17T09:05:38.339Z">
+<meta property="og:updated_time" content="2018-04-18T10:21:34.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅读EffectiveJavascript">
 <meta name="twitter:description" content="哈喽， 北小城的一亿个粉丝们， 好久不见 :D 你还记得你三个月前写的啥吗  那么我推荐你也来读一读这本EffectiveJavascript Notes 原始类型优于封装对象例如String对象有一个toUpperCase方法 “hello”.toUpperCase()  这种隐式封装会产生一个新的String对象, 这种隐式封装的一个奇怪后果是你可以对原始值设置属性，但是对其丝毫没有影响 “h">
@@ -210,6 +210,7 @@
 <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>箭头函数本身没有this, 它的this是继承来的， 默认指向定义它是他所处的对象（宿主对象）， 所以在setTimeout…中可以很方便的使用this</p>
 <h3 id="绝不要在Object-prototype-中增加可枚举的属性"><a href="#绝不要在Object-prototype-中增加可枚举的属性" class="headerlink" title="绝不要在Object.prototype 中增加可枚举的属性"></a>绝不要在Object.prototype 中增加可枚举的属性</h3><p>如果非得加的话， 可以使用 ES5 中的 Object.defineProperty<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(Object.prototype, <span class="string">'allKeys'</span>, &#123;</span><br><span class="line">  value: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    var result = [];</span><br><span class="line">    <span class="keyword">for</span> (var key <span class="keyword">in</span> this) &#123;</span><br><span class="line">      result.push(key);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  enumerable: <span class="literal">false</span>,</span><br><span class="line">  configurable: <span class="literal">true</span>,</span><br><span class="line">&#125;)</span><br><span class="line">// 通过这种方式在原型链上定义的属性是不会污染<span class="keyword">for</span>... <span class="keyword">in</span>..循环的</span><br></pre></td></tr></table></figure></p>
 <h3 id="concat-数组方法不是完全通用的"><a href="#concat-数组方法不是完全通用的" class="headerlink" title="concat 数组方法不是完全通用的"></a>concat 数组方法不是完全通用的</h3><p>concat 会检查参数的[[class]]属性， 如果不是数组的话只会把它作为一个单一的元素而不是其中每一个的元素接起来。如： arguments</p>
+<h3 id="用字面量而不是数组的构造函数"><a href="#用字面量而不是数组的构造函数" class="headerlink" title="用字面量而不是数组的构造函数"></a>用字面量而不是数组的构造函数</h3><p>因为使用数组的构造函数你需要首先确保没有人重新包装过 Array变量，其次，你还需要确保没有人重新修改过全局的Array变量</p>
 
       
 

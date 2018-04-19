@@ -8,18 +8,19 @@
   <meta name="description" content="北小城的个人博客">
   <meta name="keyword" content="北小城,个人博客,技术博客,前端,前端工程师">
   <link rel="dns-prefetch" href="https://hearmytears.cn">
-  <title>北小城的个人博客</title>
+  <title>Promise原理思考 | 北小城的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="北小城的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="北小城的个人博客">
-<meta property="og:url" content="https://hearmytears.cn/index.html">
+  <meta name="description" content="什么是Promise一个Promise对象代表一个目前还不可用， 但在未来的某个时间点可以被解析的值。它允许你通过一中同步的方式编写异步代码。 去除厄运的回调金字塔Promise 将嵌套的callback, 改造成一系列 .then的调用， 去除了层层缩进的代码风格。 它不是一个解决问题的算法，而是一种更好的组织形式。 Promise/A 规范Promise 表示一个最终值， 该值由一个操作完成时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise原理思考">
+<meta property="og:url" content="https://hearmytears.cn/2018/04/18/Promise原理思考/index.html">
 <meta property="og:site_name" content="北小城的个人博客">
-<meta property="og:description" content="北小城的个人博客">
+<meta property="og:description" content="什么是Promise一个Promise对象代表一个目前还不可用， 但在未来的某个时间点可以被解析的值。它允许你通过一中同步的方式编写异步代码。 去除厄运的回调金字塔Promise 将嵌套的callback, 改造成一系列 .then的调用， 去除了层层缩进的代码风格。 它不是一个解决问题的算法，而是一种更好的组织形式。 Promise/A 规范Promise 表示一个最终值， 该值由一个操作完成时">
 <meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-04-19T01:40:02.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="北小城的个人博客">
-<meta name="twitter:description" content="北小城的个人博客">
+<meta name="twitter:title" content="Promise原理思考">
+<meta name="twitter:description" content="什么是Promise一个Promise对象代表一个目前还不可用， 但在未来的某个时间点可以被解析的值。它允许你通过一中同步的方式编写异步代码。 去除厄运的回调金字塔Promise 将嵌套的callback, 改造成一系列 .then的调用， 去除了层层缩进的代码风格。 它不是一个解决问题的算法，而是一种更好的组织形式。 Promise/A 规范Promise 表示一个最终值， 该值由一个操作完成时">
   
     <link rel="alternative" href="/atom.xml" title="北小城的个人博客" type="application/atom+xml">
   
@@ -155,16 +156,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Promise原理思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Promise原理思考" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/18/Promise原理思考/">Promise原理思考</a>
+    <h1 class="article-title" itemprop="name">
+      Promise原理思考
     </h1>
   
 
@@ -191,6 +190,32 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖:D<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ali-admire.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -198,16 +223,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/18/Promise原理思考/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://hearmytears.cn/2018/04/18/Promise原理思考/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/11/TencentJobInterviewNote/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">TencentJobInterviewNote</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -227,722 +311,30 @@
 
 
 
-
-  
-    <article id="post-TencentJobInterviewNote" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/11/TencentJobInterviewNote/">TencentJobInterviewNote</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/11/TencentJobInterviewNote/" class="archive-article-date">
-  	<time datetime="2018-04-11T13:37:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="react的diff算法是怎样实现的，-如何从时间复杂度O-n-3-降到O-n-的"><a href="#react的diff算法是怎样实现的，-如何从时间复杂度O-n-3-降到O-n-的" class="headerlink" title="react的diff算法是怎样实现的， 如何从时间复杂度O(n^3) 降到O(n)的"></a>react的diff算法是怎样实现的， 如何从时间复杂度O(n^3) 降到O(n)的</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/11/TencentJobInterviewNote/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-阅读underlinescore源码笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/23/阅读underlinescore源码笔记/">阅读underlinescore源码笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/23/阅读underlinescore源码笔记/" class="archive-article-date">
-  	<time datetime="2018-03-23T07:50:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="underscore简介"><a href="#underscore简介" class="headerlink" title="underscore简介"></a>underscore简介</h3><p>underscore作为一个JavaScript工具库， 提供了一系列实用的函数式编程的功能。</p>
-<p>这不是重点， 重点是， 他比较好啃啊， 看源码肯定要找看起来舒服的看啊。 smile。</p>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始~"></a>开始~</h3><ol>
-<li><em>.contain 方法的实现是 内部使用 </em>.indexOf 后判断其的返回值</li>
-<li>我发现underscore中有很多方法所传的参数可以为对象， 也可以为数组，它的处理方法都是先 通过简单封装的一个isArrayLike()方法来判断 这个obj参数是一个类数组， 还是对象， 然后捏就是这样<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var keys = isArrayLike(obj) ? obj : _.values(obj),</span><br><span class="line">    length = (keys || obj).length;</span><br><span class="line">for (var index = 0; index &lt; length; index++ ) &#123;</span><br><span class="line">  var currentKey = keys ? keys[index], index;</span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>underscore 进行深拷贝尤其是数组的深拷贝时， 会倾向于使用Array(原数组length)的方式， 然后通过遍历存值。<h3 id="js继承的几种方式"><a href="#js继承的几种方式" class="headerlink" title="js继承的几种方式"></a>js继承的几种方式</h3>原型链继承<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">SuperType</span></span>() &#123;</span><br><span class="line">  this.type = 1;</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.getSuperValue = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  <span class="built_in">return</span> this.type;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">SubType</span></span>() &#123;</span><br><span class="line">  this.type = 2;</span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype = new SuperType();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>借用构造函数， 在子类构造函数中构造超类构造函数， 通过call和apply方法在新创建的对象上执行构造函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">SuperType</span></span>() &#123;</span><br><span class="line">  this.lists = [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">SubType</span></span>() &#123;</span><br><span class="line">  SuperType.call(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>组合继承<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> SuperType(name) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.lists = [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.sayName = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> SubType(name) &#123;</span><br><span class="line">  SuperType.call(this, name);</span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line">SubType.prototpye.constructor = SubType;</span><br></pre></td></tr></table></figure></p>
-<p>原型式继承， 如同我上一篇博文中的单参数Object.create<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> object(o) &#123;</span><br><span class="line">  funtion <span class="function"><span class="title">F</span></span>() &#123;&#125;</span><br><span class="line">  F.prototype = o;</span><br><span class="line">  <span class="built_in">return</span> new F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/23/阅读underlinescore源码笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-浅读EffectiveJavascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/13/浅读EffectiveJavascript/">浅读EffectiveJavascript</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/13/浅读EffectiveJavascript/" class="archive-article-date">
-  	<time datetime="2018-03-13T11:28:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>哈喽， 北小城的一亿个粉丝们， 好久不见 :D</p>
-<p>你还记得你三个月前写的啥吗</p>
-<img src="/2018/03/13/浅读EffectiveJavascript/haha.jpg">
-<p>那么我推荐你也来读一读这本EffectiveJavascript</p>
-<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><ol>
-<li><p>原始类型优于封装对象<br>例如String对象有一个toUpperCase方法 “hello”.toUpperCase()  这种隐式封装会产生一个新的String对象, 这种隐式封装的一个奇怪后果是你可以对原始值设置属性，但是对其丝毫没有影响 “hello”.someProperty = 12; “hello”.someProperty; // undefined 事实证明， 这是js隐藏类型错误的有一种情形。 本来你想对一个对象设置属性， 但没注意到其实它是个原始值， 而程序只是忽略更新继续运行。</p>
-</li>
-<li><p>Javascript 自动分号插入技术<br>(1) 分号仅在}标记之前、 一个或者多个换行之后和程序输入的结尾被插入<br>(2) 分号仅在输入标记不能被解析时插入<br>(3) 在以(, [, +, = 号前绝不能省略分号<br>(4) return throw break continue ++ – 的参数之前不能换行<br>(5) 脚本链接时显式地插入分号</p>
-</li>
-<li><p>Unicode 他为世界上所有的文字系统的每个字符单位分配了一个唯一的整数， 目前最流行的几个编码标准UTF-8, UTF-16 等等， 涉及到Unicode的处理必须谨慎， 不能信任字符串的长度， 索引值或是众多正则， 考虑到字符串的属性和方法， 字符串表现的就像UTF-16代码单元序列</p>
-</li>
-<li><p>避免使用eval创建局部变量, 如下面这段代码就非常不健壮, 不安全</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var foo = &apos;zzy&apos;;</span><br><span class="line">function test(src) &#123;</span><br><span class="line">  eval(src);</span><br><span class="line">  return y;</span><br><span class="line">&#125;</span><br><span class="line">test(&quot;var y = 123&quot;); //123</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// ES5严格模式将eval函数运行在一个嵌套的作用域中来防止这种污染</span><br><span class="line">var foo = &apos;zzy&apos;;</span><br><span class="line">function test(src) &#123;</span><br><span class="line">  (function () &#123; eval(src) &#125;)()</span><br><span class="line">  return y;</span><br><span class="line">&#125;</span><br><span class="line">test(&quot;var y = 123&quot;); //123</span><br><span class="line">// eval可以访问调用他时整个作用域的能力， 这是非常强大的能力。 作为一中折中方法， 间接调用eval会使函数失去对所有作用域访问的能力，列如 var f = eval; f(&apos;x&apos;);并且在一些高性能的浏览器会很难优化字符串中的代码。</span><br></pre></td></tr></table></figure>
-<ol>
-<li>函数的构造方法区别于函数调用和方法调用， 创建一个全新的对象作为this变量的值并隐式的返回这个对象。 构造函数的主要职责是初始化这个对象。 方法调用将被查找属性的对象作为调用的接收者。</li>
-<li>创建高阶函数抽象有利于提取公共代码， 这个思想在undersroce中也被反复使用过。在高阶函数中经常需要用到 call, apply 调用字典对象中没有的方法。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var table = &#123;</span><br><span class="line">  entiers: [],</span><br><span class="line">  addEntry: function(key, value) &#123;</span><br><span class="line">    this.entiers.push(&#123; key, value &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  forEach: function(f, thisArg) &#123;</span><br><span class="line">    var entiers = this.entiers;</span><br><span class="line">    for (var i = 0, n = entiers.length; i &lt; n; i++) &#123;</span><br><span class="line">      var entry = entiers[i];</span><br><span class="line">      f.call(thisArg, entry.key, entry,value, i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="有意思的bind"><a href="#有意思的bind" class="headerlink" title="有意思的bind"></a>有意思的bind</h3>通过 bind方法实现函数的柯里化， 即将函数与参数的一个子集绑定的技术， 如<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> simpleURL(protocol, domain, path) &#123;</span><br><span class="line">  <span class="built_in">return</span> protocol + <span class="string">'://'</span> + domain + <span class="string">'/'</span> + path;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var urls = paths.map(<span class="keyword">function</span>(path) &#123;</span><br><span class="line">  <span class="built_in">return</span> simpleURL(<span class="string">'http'</span>, siteDomain, path);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">优化为</span><br><span class="line"></span><br><span class="line">var ulrs = paths.map(simpleURL.bind(null, <span class="string">'http'</span>, siteDomain));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 这是一种简洁的， 使用更少引用来实现函数委托的方式。</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="js注意事项"><a href="#js注意事项" class="headerlink" title="js注意事项"></a>js注意事项</h3><p>不要信任toString方法， 列如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(function(x) &#123;</span><br><span class="line">  return function (y) &#123;</span><br><span class="line">    return x + y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(48).toString()</span><br><span class="line"></span><br><span class="line">// function (y) &#123;</span><br><span class="line">//    return x + y;</span><br><span class="line">// &#125;</span><br></pre></td></tr></table></figure></p>
-<p>因为 x 已经被绑定为48了， 例如.bind方法， 因为一般在宿主环境中是用其他语言如 c++实现的，所以会返回[native code]等等。<br>js的面向对象是基于原型链，而不是基于类， js的类本质上是一个构造函数（User）与一个用在该类（User.prototype）实例间共享方法的原型的结合。<br>C.prototype 属性是 new C()创建对象的原型<br>Obejct.getPrototypeOf(obj)是ES5中检索对象原型的标准函数<br>obj.<em>proto</em>是检索对象原型的非标准方法<br>一般情况下用getPrototypeOf 而非.<em>proto</em>因为null 没有._prototype<br>使构造函数与new无关， 比如说<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> User(name, age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var u = User(<span class="string">'zzy'</span>, 12);</span><br></pre></td></tr></table></figure></p>
-<p>这样会使全局的环境受到污染， 有两种方式可以避免， 其中一种用到ES5的Obejct.create<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> User)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> User(name, age)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 这种方式多调用了一次</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span> <span class="keyword">instanceof</span> User ? <span class="keyword">this</span> : Obejct.create(User.prototype);</span><br><span class="line">  self.name = name;</span><br><span class="line">  self.age = age;</span><br><span class="line">  <span class="keyword">return</span> self;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// patch</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> Obejct.create === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  <span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span> (<span class="params">prototype</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">C</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    C.prototype = prototype;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> C();</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></p>
-<h3 id="避免继承标准类，-常常会因-Class-而被破坏"><a href="#避免继承标准类，-常常会因-Class-而被破坏" class="headerlink" title="避免继承标准类， 常常会因[[Class]]而被破坏"></a>避免继承标准类， 常常会因[[Class]]而被破坏</h3><p>ECMA内部对于不可见的内部属性[[Class]]为Array的， 才会有length属性， 才会被认为是真正的数组，类似的还有Function，Error, Date, Boolean…<br>可以通过<br>Object.prototype.toString.call([]); // [Object, Array]<br>Object.prototype.toString.call(dir); // [Object, Object]</p>
-<h3 id="避免-monkey-patching"><a href="#避免-monkey-patching" class="headerlink" title="避免 monkey-patching"></a>避免 monkey-patching</h3><p>猴子补丁是指在多个库给同一个原型打补丁时，问题就会出现， 但虽然危险， 也有可靠且有价值的使用场景， 例如polyfill,先通过typeOf … !== ‘function’然后再对不同浏览器打补丁。 例如map</p>
-<h3 id="不要随意添加方法到Object-prototype中"><a href="#不要随意添加方法到Object-prototype中" class="headerlink" title="不要随意添加方法到Object.prototype中"></a>不要随意添加方法到Object.prototype中</h3><p>这样会污染 for..in .. 相比之下， 添加到Array.prototype中是安全的</p>
-<h3 id="使用null原型以防止原型污染"><a href="#使用null原型以防止原型污染" class="headerlink" title="使用null原型以防止原型污染"></a>使用null原型以防止原型污染</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">C</span></span>() &#123;&#125;</span><br><span class="line">C.prototype = null;</span><br><span class="line"></span><br><span class="line">var o = new C();</span><br><span class="line">Object.getPrototypeOf(o) === null; // fasle</span><br><span class="line">Object.getPrototypeOf(o) === Object.prototype; // <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">// es5 之后才提供了Object.create()</span><br><span class="line"></span><br><span class="line">var x = Object.create(null)</span><br><span class="line">Object.getPrototypeOf(o) === null; // <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>箭头函数本身没有this, 它的this是继承来的， 默认指向定义它是他所处的对象（宿主对象）， 所以在setTimeout…中可以很方便的使用this</p>
-<h3 id="绝不要在Object-prototype-中增加可枚举的属性"><a href="#绝不要在Object-prototype-中增加可枚举的属性" class="headerlink" title="绝不要在Object.prototype 中增加可枚举的属性"></a>绝不要在Object.prototype 中增加可枚举的属性</h3><p>如果非得加的话， 可以使用 ES5 中的 Object.defineProperty<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(Object.prototype, <span class="string">'allKeys'</span>, &#123;</span><br><span class="line">  value: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    var result = [];</span><br><span class="line">    <span class="keyword">for</span> (var key <span class="keyword">in</span> this) &#123;</span><br><span class="line">      result.push(key);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  enumerable: <span class="literal">false</span>,</span><br><span class="line">  configurable: <span class="literal">true</span>,</span><br><span class="line">&#125;)</span><br><span class="line">// 通过这种方式在原型链上定义的属性是不会污染<span class="keyword">for</span>... <span class="keyword">in</span>..循环的</span><br></pre></td></tr></table></figure></p>
-<h3 id="concat-数组方法不是完全通用的"><a href="#concat-数组方法不是完全通用的" class="headerlink" title="concat 数组方法不是完全通用的"></a>concat 数组方法不是完全通用的</h3><p>concat 会检查参数的[[class]]属性， 如果不是数组的话只会把它作为一个单一的元素而不是其中每一个的元素接起来。如： arguments</p>
-<h3 id="用字面量而不是数组的构造函数"><a href="#用字面量而不是数组的构造函数" class="headerlink" title="用字面量而不是数组的构造函数"></a>用字面量而不是数组的构造函数</h3><p>因为使用数组的构造函数你需要首先确保没有人重新包装过 Array变量，其次，你还需要确保没有人重新修改过全局的Array变量</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/13/浅读EffectiveJavascript/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-关于区块链一些有趣的东西" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/关于区块链一些有趣的东西/">关于区块链一些有趣的东西</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/08/关于区块链一些有趣的东西/" class="archive-article-date">
-  	<time datetime="2018-03-08T06:17:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote><p>How does blockchain really work? I built an app to show you.</p>
-<footer><strong>https://medium.freecodecamp.org/how-does-blockchain-really-work-i-built-an-app-to-show-you-6b70cd4caf7d</strong></footer></blockquote>
-<h3 id="BlockChain"><a href="#BlockChain" class="headerlink" title="BlockChain"></a>BlockChain</h3><p>快播被起诉时辩论称技术无罪， 禁止虚拟货币的同时官媒却赞扬区块链。 多么有趣。</p>
-<p>那么什么是区块链捏， 通俗来说：<br>一个用于维护不断增长数据的分布式数据库被称为区块链。</p>
-<p>这个工具 blockchain-cli 专门是用来展示区块链原理滴</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install blockchain-cli -g</span><br><span class="line">blockchain</span><br></pre></td></tr></table></figure>
-<p>然后你就会看到这么一个东西</p>
-<img src="/2018/03/08/关于区块链一些有趣的东西/zsh.jpeg">
-<ol>
-<li>Index：是哪一个区块（创世块的索引是0）？</li>
-<li>Hash：区块是否有效？</li>
-<li>Previous Hash：前一个区块是否有效？</li>
-<li>Timestamp：什么时候添加的区块？</li>
-<li>Data：什么信息存储在区块上？</li>
-<li>Nonce：在找到有效区块之前，我们进行了多少次迭代？</li>
-</ol>
-<p>输入 mine Hello 就可以创建一个新的区块了~</p>
-<h3 id="Hash-是怎么得来的呢"><a href="#Hash-是怎么得来的呢" class="headerlink" title="Hash 是怎么得来的呢"></a>Hash 是怎么得来的呢</h3><p>是通过将Index、PreviousHash、Timestamp、Data、Nonce作为输入值来计算滴</p>
-<pre><code class="bash">CryptoJS.SHA256(index + previousHash + timestamp + data + nonce)
-</code></pre>
-<p>你是否注意到区块Hash中的四个前导0？<br>四个前导0是一个有效Hash的最低要求。所需前导0的数量被称之为难度</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidHashDifficulty</span>(<span class="params">hash, diffculty</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, b = hash.length; i &lt; b; i ++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (hash[i] !== <span class="string">'0'</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> i &gt;= diffculty;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Nonce是什么？"><a href="#Nonce是什么？" class="headerlink" title="Nonce是什么？"></a>Nonce是什么？</h3><p>用来查找一个有效Hash的次数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nonce = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> hash;</span><br><span class="line"><span class="keyword">let</span> input;</span><br><span class="line"><span class="keyword">while</span>(!isValidHashDifficulty(hash)) &#123;     </span><br><span class="line">  nonce = nonce + <span class="number">1</span>;</span><br><span class="line">  input = index + previousHash + timestamp + data + nonce;</span><br><span class="line">  hash = CryptoJS.SHA256(input)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Nonce迭代到直到Hash有效<br>比如说至少有四个先导0</p>
-<p>改变一个区块的唯一方法就是将这个区块重新挖一遍，接下来是所有的区块。由于总是有新的区块被添加，因此改变区块几乎是一件不可能的事。</p>
-<p>Have a nice day :D</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/08/关于区块链一些有趣的东西/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-中介者模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/01/中介者模式/">中介者模式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/01/中介者模式/" class="archive-article-date">
-  	<time datetime="2018-02-01T03:33:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>好咯，好久不见，最帅的北小城又回来了。<br>今天看一下中介者模式 Mediator 模式</p>
-<h4 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h4><p>之前的观察者模式、 发布/订阅模式和本次的中介者模式区别在哪里呢， 为此我特意做图一张。</p>
-<img src="/2018/02/01/中介者模式/three.png">
-<p>下面再来看一眼Mediator的基本实现</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mediator = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> topics = &#123;&#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> subscribe = <span class="function"><span class="keyword">function</span>(<span class="params">topic, fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!topics[topic]) &#123;</span><br><span class="line">      topics[topic] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    topics[topic].push(&#123; <span class="attr">context</span>: <span class="keyword">this</span>, <span class="attr">callback</span>: fn &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> publish = <span class="function"><span class="keyword">function</span>(<span class="params">topic</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args;</span><br><span class="line">    <span class="keyword">if</span> (!topics[topic]) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    args = <span class="built_in">Array</span>.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, len = topics[topic].length; i += <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> subscription = topics[topic][i];</span><br><span class="line">      subscription.callback.apply(subscription.context, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    Publish: publish,</span><br><span class="line">    Subscribe: subscribe,</span><br><span class="line">    installTo: <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      obj.subscribe = subscribe;</span><br><span class="line">      obj.publish = publish;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>等会再补充， 先去改会儿小程序。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/01/中介者模式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GraphQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/29/GraphQL/">GraphQL</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/29/GraphQL/" class="archive-article-date">
-  	<time datetime="2018-01-29T08:24:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>哎呀呀， 好久不见啊 old friends, :D</p>
-<img src="/2018/01/29/GraphQL/lot.jpg">
-<p>言归正传啊， 今天我要去了解一个Facebook不错的东东</p>
-<h3 id="什么是GraphQL"><a href="#什么是GraphQL" class="headerlink" title="什么是GraphQL"></a>什么是GraphQL</h3><blockquote><p>GraphQL is a query language created by Facebook in 2012 which provides a common interface between the client and the server for data fetching and manipulations.</p>
-</blockquote>
-<p>简单的翻译过来就是， GraphQL是一个为了获取数据和数据修改而在客户端和服务端之间提供一个公共的界面查询语言</p>
-<p>是不是很绕。。。</p>
-<blockquote><p>The client asks for various data from the GraphQL server via queries. The response format is described in the query and defined by the client instead of the server: they are called client‐specified queries. The structure of the data is not hardcoded as in traditional REST APIs - this makes retrieving data from the server more efficient for the client.</p>
-</blockquote>
-<p>翻译菌：客户端从GraphQL服务器请求不同的数据。返回的响应被格式化描述成请求时查询的样子， 定义成客户端的样子而不是由服务器来定义。</p>
-<p>总结一下： 就是应用端可以通过GraphQL 从服务端的应用集中轻易获取一个自定义结构的数据</p>
-<p>先来看一个东西</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  user(id: <span class="number">3500401</span>) &#123;</span><br><span class="line">    id,</span><br><span class="line">    name,</span><br><span class="line">    isViewerFriend</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个东西不是一个json，但我们可以看出来查询的是id为3500401的id, name, isViewerFriend的信息</p>
-<p>用户信息对于各个业务都是通用的，假设另外一个业务需要这样的用户信息 b：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  user(id: 3500401) &#123;</span><br><span class="line">    name,</span><br><span class="line">    profilePicture(size: 50)  &#123;</span><br><span class="line">      uri,</span><br><span class="line">      width,</span><br><span class="line">      height</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一般来说，用户信息对应的数据模型都是固定的，每次请求其实就是对数据做过滤和筛选。对应到数据库操作，就是数据的查询操作。如果客户端也能够发送“查询”请求，那不就可以从后端接口这个大的“数据集”中去过滤筛选业务所需要的数据了吗？</p>
-<p>GraphQL 就是基于这样的思想来设计的。使用上面的查询，GraphQL 服务器会分别返回如下响应内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;user&quot; : &#123;</span><br><span class="line">    &quot;id&quot;: 3500401,</span><br><span class="line">    &quot;name&quot;: &quot;Jing Chen&quot;,</span><br><span class="line">    &quot;isViewerFriend&quot;: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;user&quot; : &#123;</span><br><span class="line">    &quot;name&quot;: &quot;Jing Chen&quot;,</span><br><span class="line">    &quot;profilePicture&quot;: &#123;</span><br><span class="line">      &quot;uri&quot;: &quot;http: //someurl.cdn/pic.jpg&quot;,</span><br><span class="line">      &quot;width&quot;: 50,</span><br><span class="line">      &quot;height&quot;: 50</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>只需要改变查询内容，前端就能定制服务器返回的响应内容，这就是 GraphQL 的客户端指定查询（Client Specified Queries）。</p>
-<p>今天先到这</p>
-<p>Have a nice day :D</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/29/GraphQL/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-老树的诗" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/29/老树的诗/">老树的诗</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/29/老树的诗/" class="archive-article-date">
-  	<time datetime="2018-01-29T07:14:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>何须美似画，<br>不必倩如诗。<br>花开就开了，<br>没想要人知。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/29/老树的诗/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-北岛-无题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/27/北岛-无题/">无题</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/27/北岛-无题/" class="archive-article-date">
-  	<time datetime="2018-01-27T08:40:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>挂在鹿角上的钟停了<br>　　生活是一次机会<br>　　仅仅一次<br>　　谁校对时间<br>　　谁就会突然老去</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/27/北岛-无题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="oauth2.0-，矮油不错哦" class="article article-type-oauth2.0  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/16/，矮油不错哦/">OAuth2.0，矮油不错哦</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/16/，矮油不错哦/" class="archive-article-date">
-  	<time datetime="2018-01-16T07:19:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>又摘阮一峰了， 嘿嘿嘿。</p>
-<blockquote><p>理解OAuth 2.0</p>
-<footer><strong>http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</strong></footer></blockquote>
-<h4 id="先来个定义呗"><a href="#先来个定义呗" class="headerlink" title="先来个定义呗"></a>先来个定义呗</h4><p>OAuth 是一个关于授权 (authorization) 的开放网络标准， 在全世界得到广泛应用， 目前2.0</p>
-<p>先来定义几个名词</p>
-<ol>
-<li>Third-party application: 三方应用程序,（client）, 需要用户的授权才能去干一些羞羞的事</li>
-<li>HTTP service: HTTP 服务提供商， 三方得到用户的的授权去向提供商拿对应权限的数据</li>
-<li>Resource Owner : user呗， 用户， 我们</li>
-<li>User Agent: 浏览器</li>
-<li>Authorization server: 认证服务器， 提供商专门处理认证授权的服务器</li>
-<li>Resource server: 资源服务器呗</li>
-</ol>
-<p>所以哩， OAuth的作用就是让 client 安全 可控的获取用户授权， 与服务器提供商互动</p>
-<img src="/2018/01/16/，矮油不错哦/base.jpg">
-<p>然后咧</p>
-<p>A 客户端向用户请求授权<br>B 用户同意授权<br>C 客户端拿着授权去向认证服务器申请令牌<br>D 给你， 令牌 (token)<br>E 客户端凭令牌去向资源服务器拿资源<br>F 资源服务器确定token OK，同意开放资源</p>
-<h4 id="客户端的授权模式"><a href="#客户端的授权模式" class="headerlink" title="客户端的授权模式"></a>客户端的授权模式</h4><p>OAuth四种授权方式</p>
-<ol>
-<li>授权码模式</li>
-<li>简化模式</li>
-<li>密码模式</li>
-<li>客户端模式</li>
-</ol>
-<p>下面重点看一下授权码模式</p>
-<h4 id="授权码模式"><a href="#授权码模式" class="headerlink" title="授权码模式"></a>授权码模式</h4><p>授权码模式 (authorization code) 是目前功能最完整、 流程最严密的授权模式。 它的特点就是通过客户端的后台服务器， 与服务提供商的认证服务器互动</p>
-
-<p>A 用户访问客户端， 客户端将用户导向认证服务器</p>
-<p>B 用户选择是否授权</p>
-<p>C 如果用户选择给予授权， 那么认证服务器将用户导向客户端事先指定的 重定向URI, 同时附上一个授权码</p>
-<p>D 客户端收到授权码， 附上早先的重定向URI, 向认证服务器申请令牌，这一步是在客户端的后台的服务器上完成的， 对用户不可见</p>
-<p>E 认证服务器核对了授权码和重定向的URI, 确定无误后向客户端发送访问令牌 (access token) 和更新令牌 (refresh token) </p>
-<p>下面摘了点参数， 感受一下</p>
-<p>A步骤中客户端申请认证的URI, 包含以下参数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response_type：表示授权类型，必选项，此处的值固定为<span class="string">"code"</span></span><br><span class="line">client_id：表示客户端的ID，必选项</span><br><span class="line">redirect_uri：表示重定向URI，可选项</span><br><span class="line">scope：表示申请的权限范围，可选项</span><br><span class="line">state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值</span><br></pre></td></tr></table></figure>
-<p>以下是一个栗子🌰</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">GET /authorize?response_type=code&amp;client_id=s6BhdRkqt3&amp;state=xyz</span><br><span class="line">        &amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1</span><br><span class="line">Host: server.example.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>C步骤中, 服务器回应客户端的URI, 包含一下参数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">code: 表示授权码， 有效期比较短，客户端只能使用一次， 该码和客户端的ID和重定向的URI，是一一对应的关系</span><br><span class="line">state: 原封不动传递回来客户端传递的数据</span><br></pre></td></tr></table></figure>
-<p>🌰栗子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 302 Found</span><br><span class="line">Location: https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA</span><br><span class="line">          &amp;state=xyz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>D步骤中， 客户端向认证服务器申请令牌的HTTP请求，包含以下参数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">grant_type：表示使用的授权模式，必选项，此处的值固定为<span class="string">"authorization_code"</span>。</span><br><span class="line">code：表示上一步获得的授权码，必选项。</span><br><span class="line">redirect_uri：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致。</span><br><span class="line">client_id：表示客户端ID，必选项。</span><br></pre></td></tr></table></figure>
-<p>🌰你猜的没错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /token HTTP/1.1</span><br><span class="line">Host: server.example.com</span><br><span class="line">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA</span><br><span class="line">&amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb</span><br></pre></td></tr></table></figure>
-<p>E步骤中， 认证服务器发送HTTP回复，包含以下参数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">access_token：表示访问令牌，必选项。</span><br><span class="line">token_type：表示令牌类型，该值大小写不敏感，必选项，可以是bearer类型或mac类型。</span><br><span class="line">expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。</span><br><span class="line">refresh_token：表示更新令牌，用来获取下一次的访问令牌，可选项。</span><br><span class="line">scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。</span><br></pre></td></tr></table></figure>
-<p>🌰栗栗子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Type: application/json;charset=UTF-8</span><br><span class="line">Cache-Control: no-store</span><br><span class="line">Pragma: no-cache</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;access_token&quot;:&quot;2YotnFZFEjr1zCsicMWpAA&quot;,</span><br><span class="line">  &quot;token_type&quot;:&quot;example&quot;,</span><br><span class="line">  &quot;expires_in&quot;:3600,</span><br><span class="line">  &quot;refresh_token&quot;:&quot;tGzv3JOkF0XG5Qx2TlKWIA&quot;,</span><br><span class="line">  &quot;example_parameter&quot;:&quot;example_value&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>拿出小本本记一下， 划重点划重点啦， HTTP 头信息中明确指出不得缓存</p>
-<p>嘟嘟噜 :D  Have a nice day!</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/16/，矮油不错哦/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://hearmytears.cn/2018/04/18/Promise原理思考/",
+  owner: 'ziyziyziy888',
+  repo: 'ziyziyziy888.github.io',
+  oauth: {
+    client_id: 'a077bd1163c089f5238a',
+    client_secret: '940848fbc8bb7e1be1eb8733161cf1a148ad6629',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -965,8 +357,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
